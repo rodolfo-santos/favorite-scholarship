@@ -1,8 +1,8 @@
 export default {
   head: {
-    title: 'favoriteScholarship',
+    title: 'Quero Bolsa',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'pt-br',
     },
     meta: [
       { charset: 'utf-8' },
@@ -11,17 +11,18 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [{ hid: 'fontawesome', src: 'https://kit.fontawesome.com/35b4ab768d.js', defer: true, crossorigin: 'anonymous' }],
   },
 
-  css: [],
-
-  plugins: [],
+  css: ['~/assets/scss/global.scss'],
 
   components: true,
 
   buildModules: ['@nuxt/typescript-build'],
 
-  modules: [],
+  modules: ['@nuxtjs/axios', '@nuxtjs/style-resources'],
 
-  build: {},
+  styleResources: {
+    scss: ['~/assets/scss/*.scss'],
+  },
 };

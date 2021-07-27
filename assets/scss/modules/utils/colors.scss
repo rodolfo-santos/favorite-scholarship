@@ -1,0 +1,53 @@
+$primary: #18acc4;
+$primary_variant: #007a8d;
+$secondary: #fdcb13;
+$secondary_variant: #de9e1f;
+$success: #0fa866;
+$textColor: #1f2d30;
+$background: #fbfbfb;
+$overlay: rgba(#1f2d30, 0.88);
+$muted: #ddd;
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-primary-variant {
+  background: $primary_variant;
+}
+
+.bg-secondary {
+  background: $secondary;
+}
+
+.bg-secondary-variant {
+  background: $secondary_variant;
+}
+
+.bg-success {
+  background: $success;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-primary-variant {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+}
+
+.text-secondary-variant {
+  color: $secondary-variant;
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-default {
+  color: $textColor;
+}
