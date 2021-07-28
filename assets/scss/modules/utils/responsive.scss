@@ -76,8 +76,8 @@ $extra-extra-large: 1400px;
 
 .d-flex {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  flex-flow: row wrap;
 
   @include flex-variations;
 }
@@ -101,6 +101,14 @@ $extra-extra-large: 1400px;
 }
 
 @include extra-large {
+  .xl-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   .d-xl-none {
     display: none;
   }

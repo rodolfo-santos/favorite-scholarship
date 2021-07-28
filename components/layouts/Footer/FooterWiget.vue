@@ -1,9 +1,18 @@
 <template>
-  <div class="d-flex-between">
-    <i class="text-white mr-2" :class="icon"></i>
-    <div class="d-flex-column text-white">
-      <span>{{ text }}</span>
-      <span>{{ description }}</span>
+  <div class="py-3 bg-primary-variant">
+    <div class="d-xl-flex" :class="{ 'd-none': !fixedLargeContent, 'd-flex center': fixedLargeContent }">
+      <i class="text-white mr-2" :class="icon"></i>
+      <div class="d-flex column text-white">
+        <span class="text-bold w-100 mb-1 text">{{ text }}</span>
+        <span class="text-bold w-100 description">{{ description }}</span>
+      </div>
+    </div>
+
+    <div class="d-xl-none" :class="{ 'd-flex center': !fixedLargeContent, 'd-none': fixedLargeContent }">
+      <div class="d-flex column text-white">
+        <i class="mb-1" :class="icon"></i>
+        <span class="w-100 mb-1 text">{{ shortText }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -15,12 +24,22 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class FooterWidget extends Vue {
   @Prop() public icon!: string;
   @Prop() public text!: string;
+  @Prop() public shortText!: string;
   @Prop() public description!: string;
+  @Prop({ default: false }) public fixedLargeContent!: boolean;
 }
 </script>
 
 <style lang="scss" scoped>
 i {
-  font-size: 2.5rem;
+  font-size: 3rem;
+}
+
+.text {
+  font-size: 1.3rem;
+}
+
+.description {
+  font-size: 1.1rem;
 }
 </style>
