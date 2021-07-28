@@ -3,7 +3,7 @@
     <nav class="container">
       <NuxtLink to="/minha-conta" class="nuxt-link py-2 px-4">Minha Conta</NuxtLink>
       <NuxtLink to="/pre-matriculas" class="nuxt-link py-2 px-4">Pré-matrículas</NuxtLink>
-      <NuxtLink to="/" class="nuxt-link py-2 px-4">Bolsas favoritas</NuxtLink>
+      <NuxtLink to="/minha-conta/bolsas-favoritas" class="nuxt-link py-2 px-4">Bolsas favoritas</NuxtLink>
     </nav>
   </div>
 </template>
@@ -22,7 +22,7 @@ nav {
 
 .nuxt-link {
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   transition: 0.25s;
 
   &:hover {
@@ -30,7 +30,7 @@ nav {
   }
 }
 
-.nuxt-link-active {
+.nuxt-link-exact-active {
   background: $primary-variant;
   &:hover {
     background-color: $primary-variant;

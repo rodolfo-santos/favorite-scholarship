@@ -36,11 +36,11 @@ export default class TopBar extends Vue {}
 
 <style lang="scss" scoped>
 i {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 
 span {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 img {
