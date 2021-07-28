@@ -1,18 +1,32 @@
 <template>
   <div class="bg-primary">
-    <nav class="container">
-      <NuxtLink to="/minha-conta" class="nuxt-link py-2 px-4">Minha Conta</NuxtLink>
-      <NuxtLink to="/pre-matriculas" class="nuxt-link py-2 px-4">Pré-matrículas</NuxtLink>
-      <NuxtLink to="/minha-conta/bolsas-favoritas" class="nuxt-link py-2 px-4">Bolsas favoritas</NuxtLink>
+    <nav class="container d-none d-lg-flex">
+      <NuxtLink to="/minha-conta" class="nuxt-link py-2 pr-4 text-bold">Minha Conta</NuxtLink>
+      <NuxtLink v-for="(link, index) in menuItens" :key="index" :to="link.link" class="nuxt-link py-2 px-4">{{ link.label }}</NuxtLink>
+    </nav>
+
+    <nav class="container d-flex between d-lg-none">
+      <NuxtLink to="/minha-conta" class="nuxt-link py-2 text-bold">Minha Conta</NuxtLink>
+      <DropdownButton label="Menu" :links="menuItens" />
+      <div class="d-none d-lg-flex-column">
+        <NuxtLink v-for="(link, index) in menuItens" :key="index" :to="link.link" class="nuxt-link py-2 px-4">{{ link.label }}</NuxtLink>
+      </div>
     </nav>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import DropdownButton from '~/components/utils/DropdownButton.vue';
+import { IMenuLink } from '~/models/IMenuLink';
 
-@Component({ components: {} })
-export default class MenuNav extends Vue {}
+@Component({ components: { DropdownButton } })
+export default class MenuNav extends Vue {
+  public menuItens: IMenuLink[] = [
+    { label: 'Pré-matrículas', link: '/pre-matriculas' },
+    { label: 'Bolsas favoritas', link: '/minha-conta/bolsas-favoritas' },
+  ];
+}
 </script>
 
 <style lang="scss" scoped>
@@ -35,5 +49,9 @@ nav {
   &:hover {
     background-color: $primary-variant;
   }
+}
+
+.dropdown-menu {
+  cursor: pointer;
 }
 </style>

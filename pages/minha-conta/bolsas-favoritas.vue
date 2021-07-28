@@ -1,15 +1,18 @@
 <template>
-  <main></main>
+  <main class="container">
+    <Title title="Bolsas Favoritas" />
+  </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
+import Title from '~/components/utils/Title.vue';
 
 const store = namespace('Store');
 
-@Component({ components: {} })
+@Component({ components: { Title } })
 export default class BolsasFavoritas extends Vue {
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
