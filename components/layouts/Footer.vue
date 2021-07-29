@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="mt-4">
     <div class="xl-container d-flex between footer-top">
       <FooterWidget
         v-for="(widget, index) in widgets"

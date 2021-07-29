@@ -8,14 +8,18 @@
         <li class="px-4 py-2 w-100 w-md-auto" @click="changeSemester($event)">1º semestre de 2020</li>
       </ul>
     </nav>
-    <section class="d-flex between">
-      <AddScholarshipCard />
-      <AddScholarshipCard />
-      <AddScholarshipCard />
-      <AddScholarshipCard />
-      <AddScholarshipCard />
-      <AddScholarshipCard />
-    </section>
+    <div class="grid">
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" />
+    </div>
+
+    <Modal id="modal" />
   </main>
 </template>
 
@@ -25,10 +29,11 @@ import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
 import Title from '~/components/utils/Title.vue';
 import AddScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/AddScholarshipCard.vue';
+import Modal from '~/components/utils/Modal.vue';
 
 const store = namespace('Store');
 
-@Component({ components: { Title, AddScholarshipCard } })
+@Component({ components: { Title, AddScholarshipCard, Modal } })
 export default class BolsasFavoritas extends Vue {
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
@@ -51,6 +56,12 @@ export default class BolsasFavoritas extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 25px;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -78,6 +89,11 @@ li:last-child {
 }
 
 @include medium {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   li {
     border-top: 2px solid $primary-variant;
     border-left: none;
@@ -98,6 +114,20 @@ li:last-child {
 
   li:last-child {
     border-radius: 0px 5px 5px 0px;
+  }
+}
+
+@include large {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@include extra-large {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 </style>

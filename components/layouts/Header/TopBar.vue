@@ -1,5 +1,5 @@
 <template>
-  <div class="topbar container d-flex-between">
+  <div class="topbar container">
     <HowItWorks class="how-it-works" />
     <div class="d-flex center logo">
       <img src="~/static/images/logo_quero_bolsa.jpg" alt="Logotipo Quero Bolsa" class="py-1" />
@@ -23,13 +23,8 @@ img {
 }
 
 .topbar {
-  height: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
-
-.topbar > div {
-  height: 100%;
 }
 
 @include small {
