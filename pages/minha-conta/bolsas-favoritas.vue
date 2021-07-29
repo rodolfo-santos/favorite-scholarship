@@ -1,6 +1,21 @@
 <template>
   <main class="container">
-    <Title title="Bolsas Favoritas" />
+    <Title title="Bolsas favoritas" />
+    <nav class="d-flex my-4">
+      <ul class="d-flex right text-bold text-primary-variant w-100">
+        <li class="px-4 py-2 w-100 w-md-auto" @click="changeSemester($event)">Todos os Semestres</li>
+        <li class="px-4 py-2 w-100 w-md-auto" @click="changeSemester($event)">2º semestre de 2019</li>
+        <li class="px-4 py-2 w-100 w-md-auto" @click="changeSemester($event)">1º semestre de 2020</li>
+      </ul>
+    </nav>
+    <section class="d-flex between">
+      <AddScholarshipCard />
+      <AddScholarshipCard />
+      <AddScholarshipCard />
+      <AddScholarshipCard />
+      <AddScholarshipCard />
+      <AddScholarshipCard />
+    </section>
   </main>
 </template>
 
@@ -9,10 +24,11 @@ import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
 import Title from '~/components/utils/Title.vue';
+import AddScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/AddScholarshipCard.vue';
 
 const store = namespace('Store');
 
-@Component({ components: { Title } })
+@Component({ components: { Title, AddScholarshipCard } })
 export default class BolsasFavoritas extends Vue {
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
@@ -26,7 +42,62 @@ export default class BolsasFavoritas extends Vue {
   public created(): void {
     this.changeBreadcrumb(this.breadcrumb);
   }
+
+  public changeSemester($event: Event): void {
+    document.querySelector('li.active')?.classList.remove('active');
+    ($event.target as HTMLElement).classList.add('active');
+  }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.active {
+  background: $primary-variant;
+  color: #fff;
+}
+
+li {
+  border-left: 2px solid $primary-variant;
+  border-right: 2px solid $primary-variant;
+  border-bottom: 2px solid $primary-variant;
+  cursor: pointer;
+}
+
+li:first-child {
+  border-top: 2px solid $primary-variant;
+  border-radius: 5px 5px 0px 0px;
+}
+
+li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+@include medium {
+  li {
+    border-top: 2px solid $primary-variant;
+    border-left: none;
+    border-right: 2px solid $primary-variant;
+    border-bottom: 2px solid $primary-variant;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:not(.active):hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  li:first-child {
+    border-left: 2px solid $primary-variant;
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  li:last-child {
+    border-radius: 0px 5px 5px 0px;
+  }
+}
+</style>

@@ -86,6 +86,12 @@ $extra-extra-large: 1400px;
   display: none;
 }
 
+@include medium {
+  .w-md-auto {
+    width: auto;
+  }
+}
+
 @include large {
   .d-lg-none {
     display: none;
