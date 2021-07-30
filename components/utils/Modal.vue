@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-          <div class="grid">
+          <div class="grid mb-4">
             <InputSelect :value.sync="city" :options="cityOptions" label="Selecione sua cidade" class="grid-box" />
             <InputSelect :value.sync="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="grid-box" />
             <div class="grid-box">
@@ -22,6 +22,12 @@
 
             <InputRange :price.sync="price" class="w-100" />
           </div>
+          <ScholarshipTable />
+        </div>
+
+        <div class="d-flex right card-footer mt-4">
+          <button class="mr-4">Cancelar</button>
+          <button class="bg-primary text-white">Adicionar bolsa(s)</button>
         </div>
       </div>
     </div>
@@ -29,14 +35,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, PropSync, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import ScholarshipTable from '../pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
 import InputSelect from './InputSelect.vue';
 import InputCheckBox from './InputCheckbox.vue';
 import InputRange from './InputRange.vue';
-
 type option = { label: string; id: string };
 
-@Component({ components: { InputSelect, InputCheckBox, InputRange } })
+@Component({ components: { InputSelect, InputCheckBox, InputRange, ScholarshipTable } })
 export default class Modal extends Vue {
   @Prop({ required: true }) show!: boolean;
   public city: string = 'São José dos Campos';
@@ -117,7 +123,7 @@ export default class Modal extends Vue {
 
 .card {
   width: 100%;
-  height: 700px;
+  height: 800px;
   max-width: 900px;
   background-color: #ffffff;
   overflow-y: auto;

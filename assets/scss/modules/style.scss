@@ -19,6 +19,17 @@ a {
   color: $textColor;
 }
 
+button {
+  padding: 12px 22px;
+  font-size: 1rem;
+  background: #fff;
+  color: $primary;
+  box-shadow: none;
+  border: solid 1px $primary;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #eee;

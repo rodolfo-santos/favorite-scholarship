@@ -2,7 +2,7 @@
   <div class="topbar container">
     <HowItWorks class="how-it-works" />
     <div class="d-flex center logo">
-      <img src="~/static/images/logo_quero_bolsa.jpg" alt="Logotipo Quero Bolsa" class="py-1" />
+      <img src="~/static/images/logo-querobolsa.svg" alt="Logotipo Quero Bolsa" class="py-1" />
     </div>
     <Profile class="profile" />
   </div>
