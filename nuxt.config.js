@@ -16,6 +16,8 @@ export default {
 
   css: ['~/assets/scss/global.scss'],
 
+  plugins: ['~plugins/filters.ts'],
+
   components: true,
 
   buildModules: ['@nuxt/typescript-build'],

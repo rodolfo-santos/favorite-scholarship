@@ -2,13 +2,13 @@
   <div class="select">
     <label class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
     <div class="select-box d-flex between px-2 py-2" @click="toogleList">
-      <span>{{ value }}</span>
+      <span>{{ syncedValue }}</span>
       <i class="fas fa-chevron-down"></i>
     </div>
 
-    <div class="select-options" :class="{ 'd-none': !showList }">
+    <div class="select-options w-100" :class="{ 'd-none': !showList }">
       <div v-for="option in options" :key="option.id" class="option d-flex">
-        <input :id="option.id" v-model="value" type="radio" name="option" :value="option.label" />
+        <input :id="option.id" v-model="syncedValue" type="radio" name="option" :value="option.label" />
         <label :for="option.id" class="w-100 py-1 px-2" @click="toogleList"> {{ option.label }} </label>
       </div>
     </div>
@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, PropSync, Vue } from 'vue-property-decorator';
 
 type option = { label: string; id: string };
 
 @Component({ components: {} })
 export default class InputSelect extends Vue {
-  @Prop({ required: true }) public value!: string;
+  @PropSync('value') public syncedValue!: string;
   @Prop({ required: true }) public options!: option[];
   @Prop({ required: true }) public label!: string;
   public showList: boolean = false;
@@ -47,12 +47,8 @@ export default class InputSelect extends Vue {
 
 <style lang="scss" scoped>
 .select {
-  width: 250px;
   cursor: pointer;
-}
-
-.select > label {
-  font-size: 0.9rem;
+  position: relative;
 }
 
 .select-box {
@@ -67,6 +63,8 @@ export default class InputSelect extends Vue {
 
 .select-options {
   border: solid 1px $muted;
+  position: absolute;
+  background: #fff;
 
   input[type='radio'] {
     display: none;

@@ -9,17 +9,10 @@
       </ul>
     </nav>
     <div class="grid">
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
-      <AddScholarshipCard class="card-grid" />
+      <AddScholarshipCard class="card-grid" @click="showAddModal = true" />
     </div>
 
-    <Modal id="modal" />
+    <Modal :show="showAddModal" @close="showAddModal = false" />
   </main>
 </template>
 
@@ -35,6 +28,7 @@ const store = namespace('Store');
 
 @Component({ components: { Title, AddScholarshipCard, Modal } })
 export default class BolsasFavoritas extends Vue {
+  public showAddModal: boolean = false;
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
     { name: 'Minha Conta', link: '/minha-conta' },
@@ -120,14 +114,14 @@ li:last-child {
 @include large {
   .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @include extra-large {
   .grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>

@@ -1,30 +1,44 @@
 <template>
-  <div class="overlay d-flex center">
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-times close-button text-white"></i>
-        <h1 class="mb-1">Adicionar bolsa</h1>
-        <p class="text-muted">Filtre e adicione as bolsas de seu interesse.</p>
-      </div>
+  <transition v-if="show" name="fade" mode="out-in">
+    <div class="overlay d-flex center" @click.self="closeModal">
+      <div class="card">
+        <div class="card-header">
+          <i class="fas fa-times close-button text-white" @click="closeModal"></i>
+          <h1 class="mb-1">Adicionar bolsa</h1>
+          <p>Filtre e adicione as bolsas de seu interesse.</p>
+        </div>
 
-      <div class="card-body">
-        <div class="filter">
-          <InputSelect v-model="city" :options="cityOptions" label="Selecione sua cidade" class="input-select" />
-          <InputSelect v-model="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="input-select" />
+        <div class="card-body">
+          <div class="grid">
+            <InputSelect :value.sync="city" :options="cityOptions" label="Selecione sua cidade" class="grid-box" />
+            <InputSelect :value.sync="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="grid-box" />
+            <div class="grid-box">
+              <label class="text-bold text-uppercase d-flex mb-1">Como você quer estudar?</label>
+              <div class="d-flex">
+                <InputCheckBox id="face=to=face-check" label="Presencial" class="mt-4 mr-4" :value.sync="kindOfStudy.faceToface" />
+                <InputCheckBox id="distance-check" label="A distância" class="mt-4" :value.sync="kindOfStudy.distance" />
+              </div>
+            </div>
+
+            <InputRange :price.sync="price" class="w-100" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, PropSync, Vue, Watch } from 'vue-property-decorator';
 import InputSelect from './InputSelect.vue';
+import InputCheckBox from './InputCheckbox.vue';
+import InputRange from './InputRange.vue';
 
 type option = { label: string; id: string };
 
-@Component({ components: { InputSelect } })
+@Component({ components: { InputSelect, InputCheckBox, InputRange } })
 export default class Modal extends Vue {
+  @Prop({ required: true }) show!: boolean;
   public city: string = 'São José dos Campos';
   public cityOptions: option[] = [
     {
@@ -60,13 +74,40 @@ export default class Modal extends Vue {
       id: 'psicologia',
     },
   ];
+
+  public kindOfStudy = {
+    faceToface: false,
+    distance: false,
+  };
+
+  public price: number = 200;
+
+  @Watch('show')
+  public onShowChanged() {
+    const body: HTMLElement = document.querySelector('body') as HTMLElement;
+    if (this.show) {
+      body.style.overflowY = 'hidden';
+      body.style.paddingRight = '10px';
+    } else {
+      body.style.overflowY = 'auto';
+      body.style.paddingRight = '0px';
+    }
+  }
+
+  public mounted(): void {}
+
+  public disableOverflowBody(): void {}
+
+  public closeModal(): void {
+    this.$emit('close');
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .overlay {
   z-index: 99;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
@@ -75,11 +116,11 @@ export default class Modal extends Vue {
 }
 
 .card {
-  height: 100%;
   width: 100%;
-  max-height: 700px;
+  height: 700px;
   max-width: 900px;
   background-color: #ffffff;
+  overflow-y: auto;
 
   position: relative;
   padding: 50px;
@@ -94,15 +135,16 @@ export default class Modal extends Vue {
   right: 0;
   top: -50px;
   font-size: 3em;
+  cursor: pointer;
 }
 
-.filter {
+.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 30px;
 }
 
-.input-select {
+.grid-box {
   width: auto;
   &:nth-child(odd) {
     grid-column: 1;

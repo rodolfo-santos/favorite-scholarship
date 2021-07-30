@@ -1,5 +1,5 @@
 <template>
-  <div class="card d-flex center px-2 py-2 text-center">
+  <div class="card d-flex center px-2 py-2 text-center" @click="$emit('click')">
     <div class="d-flex center">
       <div class="add-icon d-flex center mb-4">
         <i class="fas fa-plus"></i>
