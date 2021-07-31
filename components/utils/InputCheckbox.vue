@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="id" class="w-100 d-flex">
+    <label :for="id" class="w-100 d-flex center">
       <i v-show="!syncedValue" class="far fa-square"></i>
       <i v-show="syncedValue" class="fas fa-check-square text-primary"></i>
       <span v-if="label" class="ml-1">{{ label }}</span>

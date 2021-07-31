@@ -1,5 +1,5 @@
 <template>
-  <div class="select">
+  <div class="input-select">
     <label class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
     <div class="select-box d-flex between px-2 py-2" @click="toogleList">
       <span>{{ syncedValue.label }}</span>
@@ -46,13 +46,11 @@ export default class InputSelect extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.select {
-  cursor: pointer;
+.input-select {
   position: relative;
 }
 
 .select-box {
-  font-size: 1rem;
   border: solid 1px $muted;
   border-radius: 5px;
 
@@ -67,6 +65,7 @@ export default class InputSelect extends Vue {
   background: #fff;
   max-height: 250px;
   overflow-y: auto;
+  z-index: 99;
 
   input[type='radio'] {
     display: none;

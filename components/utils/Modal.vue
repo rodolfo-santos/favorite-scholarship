@@ -3,30 +3,17 @@
     <div class="overlay d-flex center" @click.self="closeModal">
       <div class="card">
         <div class="card-header">
-          <h1 class="mb-1">Adicionar bolsa</h1>
-          <p>Filtre e adicione as bolsas de seu interesse.</p>
+          <h1 class="mb-1">{{ title }}</h1>
+          <p v-if="subtitle">{{ subtitle }}</p>
         </div>
 
         <div class="card-body">
-          <div class="grid mb-4">
-            <InputSelect :value.sync="city" :options="cityOptions" label="Selecione sua cidade" class="grid-box" />
-            <InputSelect :value.sync="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="grid-box" />
-            <div class="grid-box">
-              <label class="text-bold text-uppercase d-flex mb-1">Como você quer estudar?</label>
-              <div class="d-flex">
-                <InputCheckBox id="face=to=face-check" label="Presencial" class="mt-4 mr-4" :value.sync="kindOfStudy.faceToface" />
-                <InputCheckBox id="distance-check" label="A distância" class="mt-4" :value.sync="kindOfStudy.distance" />
-              </div>
-            </div>
-
-            <InputRange :price.sync="price" class="w-100" />
-          </div>
-          <ScholarshipTable />
+          <slot></slot>
         </div>
 
         <div class="d-flex right card-footer mt-4">
-          <button class="mr-4">Cancelar</button>
-          <button class="bg-primary text-white">Adicionar bolsa(s)</button>
+          <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
+          <button class="bg-primary text-white" disabled @click="$emit('confirm')">{{ confirmText }}</button>
         </div>
       </div>
     </div>
@@ -34,38 +21,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, PropSync, Vue, Watch } from 'vue-property-decorator';
 import ScholarshipTable from '../pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
 import InputSelect from './InputSelect.vue';
 import InputCheckBox from './InputCheckbox.vue';
 import InputRange from './InputRange.vue';
-import CitiesService from '~/services/CitiesService';
-import CoursesService from '~/services/CoursesService';
-import { ICourse } from '~/models/ICourse';
-
-type option = { label: string; id: string };
 
 @Component({ components: { InputSelect, InputCheckBox, InputRange, ScholarshipTable } })
 export default class Modal extends Vue {
   @Prop({ required: true }) show!: boolean;
-  public citiesService = new CitiesService();
-  public coursesService = new CoursesService();
-
-  public city: option = { label: '', id: '' };
-  public cityOptions: option[] = [];
-
-  public course: option = { label: '', id: '' };
-  public courseOptions: option[] = [];
-
-  public kindOfStudy = {
-    faceToface: false,
-    distance: false,
-  };
-
-  public price: number = 200;
+  @Prop({ required: true }) title!: string;
+  @Prop() subtitle!: string;
+  @Prop({ default: 'Confirmar' }) confirmText!: string;
+  @Prop({ default: 'Cancelar' }) cancelText!: string;
 
   @Watch('show')
   public onShowChanged() {
+    this.disableOverflowY();
+  }
+
+  public disableOverflowY(): void {
     const body: HTMLElement = document.querySelector('body') as HTMLElement;
     if (this.show) {
       body.style.overflowY = 'hidden';
@@ -75,26 +50,6 @@ export default class Modal extends Vue {
       body.style.paddingRight = '0px';
     }
   }
-
-  public mounted(): void {
-    this.getCities();
-    this.getCourses();
-  }
-
-  public getCities(): void {
-    this.cityOptions = this.citiesService.getCities();
-    this.city = this.cityOptions[0];
-  }
-
-  public getCourses(): void {
-    const courses: ICourse[] = this.coursesService.getCourses();
-    this.courseOptions = courses.map(course => {
-      return { id: course.id, label: course.name };
-    });
-    this.course = this.courseOptions[0];
-  }
-
-  public disableOverflowBody(): void {}
 
   public closeModal(): void {
     this.$emit('close');
@@ -115,13 +70,13 @@ export default class Modal extends Vue {
 
 .card {
   width: 100%;
-  height: 800px;
+  height: 85vh;
   max-width: 900px;
   background-color: #ffffff;
   overflow-y: auto;
 
   position: relative;
-  padding: 50px;
+  padding: 25px;
 }
 
 .card-header {
@@ -130,17 +85,34 @@ export default class Modal extends Vue {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 30px;
 }
 
 .grid-box {
   width: auto;
-  &:nth-child(odd) {
-    grid-column: 1;
+  grid-column: 1;
+}
+
+@include extra-large {
+  .card {
+    padding: 50px;
   }
-  &:nth-child(even) {
-    grid-column: 2;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+
+  .grid-box {
+    width: auto;
+    &:nth-child(odd) {
+      grid-column: 1;
+    }
+    &:nth-child(even) {
+      grid-column: 2;
+    }
   }
 }
 </style>

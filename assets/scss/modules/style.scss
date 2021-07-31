@@ -28,6 +28,23 @@ button {
   border: solid 1px $primary;
   font-weight: bold;
   border-radius: 5px;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    background-color: darken(#fff, 5%);
+  }
+
+  &.bg-primary:hover {
+    background-color: darken($primary, 5%);
+  }
+
+  &[disabled='disabled'] {
+    border: solid 1px darken($muted, 30%);
+    background-color: $muted !important;
+    color: darken($muted, 30%);
+    cursor: default;
+  }
 }
 
 ::-webkit-scrollbar {

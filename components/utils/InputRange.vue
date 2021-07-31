@@ -2,7 +2,7 @@
   <div>
     <div>
       <label class="text-bold text-uppercase d-flex mb-1">Até quanto pode pagar ?</label>
-      {{ syncedPrice | currencyBRL }}
+      <span>{{ syncedPrice | currencyBRL }}</span>
     </div>
     <input v-model.number="syncedPrice" type="range" min="100" max="10000" class="w-100" />
   </div>

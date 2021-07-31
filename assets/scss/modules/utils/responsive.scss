@@ -74,16 +74,16 @@ $extra-extra-large: 1400px;
   width: 100%;
 }
 
+.d-none {
+  display: none;
+}
+
 .d-flex {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
 
   @include flex-variations;
-}
-
-.d-none {
-  display: none;
 }
 
 @include medium {

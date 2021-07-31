@@ -9,10 +9,9 @@
       </ul>
     </nav>
     <div class="grid">
-      <AddScholarshipCard class="card-grid" @click="showAddModal = true" />
+      <AddScholarshipCard class="card-grid" @click="openAddModal()" />
     </div>
-
-    <Modal :show="showAddModal" @close="showAddModal = false" />
+    <NuxtChild />
   </main>
 </template>
 
@@ -22,13 +21,11 @@ import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
 import Title from '~/components/utils/Title.vue';
 import AddScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/AddScholarshipCard.vue';
-import Modal from '~/components/utils/Modal.vue';
 
 const store = namespace('Store');
 
-@Component({ components: { Title, AddScholarshipCard, Modal } })
+@Component({ components: { Title, AddScholarshipCard } })
 export default class BolsasFavoritas extends Vue {
-  public showAddModal: boolean = false;
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
     { name: 'Minha Conta', link: '/minha-conta' },
@@ -45,6 +42,10 @@ export default class BolsasFavoritas extends Vue {
   public changeSemester($event: Event): void {
     document.querySelector('li.active')?.classList.remove('active');
     ($event.target as HTMLElement).classList.add('active');
+  }
+
+  public openAddModal(): void {
+    this.$router.push('/minha-conta/bolsas-favoritas/adicionar');
   }
 }
 </script>
