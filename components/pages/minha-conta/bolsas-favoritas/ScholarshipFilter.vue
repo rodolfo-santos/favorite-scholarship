@@ -49,7 +49,7 @@ export default class ScholarshipFilter extends Vue {
   public get kindList(): string[] {
     const list: string[] = [];
     if (this.kindOfStudy.faceToface) list.push('Presencial');
-    if (this.kindOfStudy.distance) list.push('A Distância');
+    if (this.kindOfStudy.distance) list.push('EaD');
 
     return list;
   }

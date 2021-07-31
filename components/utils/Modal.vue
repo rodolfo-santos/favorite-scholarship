@@ -13,7 +13,7 @@
 
         <div class="d-flex right card-footer mt-4">
           <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
-          <button class="bg-primary text-white" disabled @click="$emit('confirm')">{{ confirmText }}</button>
+          <button class="bg-primary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
         </div>
       </div>
     </div>
@@ -34,6 +34,7 @@ export default class Modal extends Vue {
   @Prop() subtitle!: string;
   @Prop({ default: 'Confirmar' }) confirmText!: string;
   @Prop({ default: 'Cancelar' }) cancelText!: string;
+  @Prop({ default: false }) disableConfirmButton!: boolean;
 
   @Watch('show')
   public onShowChanged() {

@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import InputCheckBox from '~/components/utils/InputCheckbox.vue';
 import { IScholarship } from '~/models/IScholarship';
 
@@ -30,6 +30,11 @@ import { IScholarship } from '~/models/IScholarship';
 export default class ScholarshipRow extends Vue {
   @Prop({ default: () => [] }) data!: IScholarship;
   public checked: boolean = false;
+
+  @Watch('checked')
+  public onCheckedChanged(): void {
+    this.$emit('select', this.data, this.checked);
+  }
 }
 </script>
 

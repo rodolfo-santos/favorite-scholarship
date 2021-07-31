@@ -1,8 +1,8 @@
 <template>
   <div class="input-select">
-    <label class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
-    <div class="select-box d-flex between px-2 py-2" @click="toogleList">
-      <span>{{ syncedValue.label }}</span>
+    <label v-if="label" class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
+    <div class="d-flex between px-2 py-2" :class="{ 'select-text': type === 'text', 'select-box': type === 'box' }" @click="toogleList">
+      <span class="mr-1">{{ syncedValue.label }}</span>
       <i class="fas fa-chevron-down"></i>
     </div>
 
@@ -24,7 +24,9 @@ type option = { label: string; id: string };
 export default class InputSelect extends Vue {
   @PropSync('value') public syncedValue!: option;
   @Prop({ required: true }) public options!: option[];
-  @Prop({ required: true }) public label!: string;
+  @Prop({ default: 'box' }) public type!: string;
+  @Prop() public label!: string;
+
   public showList: boolean = false;
   public element!: EventTarget;
 
@@ -50,6 +52,14 @@ export default class InputSelect extends Vue {
   position: relative;
 }
 
+.select-text {
+  color: $primary;
+  cursor: pointer;
+  i {
+    font-size: 0.75rem;
+  }
+}
+
 .select-box {
   border: solid 1px $muted;
   border-radius: 5px;
@@ -66,6 +76,8 @@ export default class InputSelect extends Vue {
   max-height: 250px;
   overflow-y: auto;
   z-index: 99;
+  min-width: 200px;
+  right: 0;
 
   input[type='radio'] {
     display: none;
