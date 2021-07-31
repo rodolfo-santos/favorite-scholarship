@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import InputCheckBox from '~/components/utils/InputCheckbox.vue';
-import { IScholarship } from '~/models/IScholarshop';
+import { IScholarship } from '~/models/IScholarship';
 
 @Component({ components: { InputCheckBox } })
 export default class ScholarshipRow extends Vue {

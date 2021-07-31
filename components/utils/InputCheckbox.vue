@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label :for="id" class="w-100 d-flex center">
+    <label class="w-100 d-flex center" @click="syncedValue = !syncedValue">
       <i v-show="!syncedValue" class="far fa-square"></i>
       <i v-show="syncedValue" class="fas fa-check-square text-primary"></i>
       <span v-if="label" class="ml-1">{{ label }}</span>
     </label>
-    <input :id="id" v-model="syncedValue" type="checkbox" name="checkbox" />
+    <input v-model="syncedValue" :checked="syncedValue" type="checkbox" name="checkbox" />
   </div>
 </template>
 
@@ -16,7 +16,6 @@ import { Component, Prop, PropSync, Vue } from 'vue-property-decorator';
 export default class InputCheckBox extends Vue {
   @PropSync('value') public syncedValue!: string;
   @Prop({ default: null }) public label!: string;
-  @Prop({ required: true }) public id!: string;
 }
 </script>
 

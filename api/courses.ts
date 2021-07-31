@@ -1,6 +1,10 @@
 import { ICourse } from './../models/ICourse';
 const courses: ICourse[] = [
   {
+    id: 'todososcursos',
+    name: 'Todos os Cursos',
+  },
+  {
     id: 'administracao',
     name: 'Administração',
   },

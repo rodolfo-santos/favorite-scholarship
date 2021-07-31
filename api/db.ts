@@ -1,4 +1,4 @@
-import { IScholarship } from './../models/IScholarshop';
+import { IScholarship } from '../models/IScholarship';
 const db: IScholarship[] = [
   {
     fullPrice: 2139.64,

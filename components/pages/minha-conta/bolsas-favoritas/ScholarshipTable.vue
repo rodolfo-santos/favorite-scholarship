@@ -7,25 +7,21 @@
       </span>
     </div>
     <div class="w-100">
-      <ScholarshipRow v-for="(scholarship, index) in scholarships" :key="index" :data="scholarship" />
+      <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import ScholarshipRow from './ScholarshipRow.vue';
 import ScholarshipService from '~/services/ScholarshipService';
-import { IScholarship } from '~/models/IScholarshop';
+import { IScholarship } from '~/models/IScholarship';
 
 @Component({ components: { ScholarshipRow } })
 export default class ScholarshipTable extends Vue {
+  @Prop() public list!: IScholarship[];
   public scholarshipService = new ScholarshipService();
-  public scholarships: IScholarship[] = [];
-
-  public mounted(): void {
-    this.scholarships = this.scholarshipService.get();
-  }
 }
 </script>
 
