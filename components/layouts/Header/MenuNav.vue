@@ -6,7 +6,7 @@
     </nav>
 
     <nav class="container d-flex between d-lg-none">
-      <NuxtLink to="/minha-conta" class="py-2 text-bold text-white">Minha Conta</NuxtLink>
+      <NuxtLink to="/minha-conta" class="py-2 text-bold text-white my-account">Minha Conta</NuxtLink>
       <DropdownButton label="Menu" :links="menuItens" />
       <div class="d-none d-lg-flex-column">
         <NuxtLink v-for="(link, index) in menuItens" :key="index" :to="link.link" class="nuxt-link py-2 px-4">{{ link.label }}</NuxtLink>

@@ -1,9 +1,7 @@
 <template>
   <div>
     <h1 class="mb-2">{{ title }}</h1>
-    <p class="text-muted">
-      Adicione bolsas de cursos e faculdades do seu interesse e receba atualizações com as melhores ofertas disponíveis.
-    </p>
+    <p>Adicione bolsas de cursos e faculdades do seu interesse e receba atualizações com as melhores ofertas disponíveis.</p>
   </div>
 </template>
 

@@ -2,13 +2,13 @@
   <div class="select">
     <label class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
     <div class="select-box d-flex between px-2 py-2" @click="toogleList">
-      <span>{{ syncedValue }}</span>
+      <span>{{ syncedValue.label }}</span>
       <i class="fas fa-chevron-down"></i>
     </div>
 
     <div class="select-options w-100" :class="{ 'd-none': !showList }">
       <div v-for="option in options" :key="option.id" class="option d-flex">
-        <input :id="option.id" v-model="syncedValue" type="radio" name="option" :value="option.label" />
+        <input :id="option.id" v-model="syncedValue" type="radio" name="option" :value="option" />
         <label :for="option.id" class="w-100 py-1 px-2" @click="toogleList"> {{ option.label }} </label>
       </div>
     </div>
@@ -22,7 +22,7 @@ type option = { label: string; id: string };
 
 @Component({ components: {} })
 export default class InputSelect extends Vue {
-  @PropSync('value') public syncedValue!: string;
+  @PropSync('value') public syncedValue!: option;
   @Prop({ required: true }) public options!: option[];
   @Prop({ required: true }) public label!: string;
   public showList: boolean = false;
@@ -65,6 +65,8 @@ export default class InputSelect extends Vue {
   border: solid 1px $muted;
   position: absolute;
   background: #fff;
+  max-height: 250px;
+  overflow-y: auto;
 
   input[type='radio'] {
     display: none;

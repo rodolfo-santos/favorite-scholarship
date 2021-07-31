@@ -3,7 +3,6 @@
     <div class="overlay d-flex center" @click.self="closeModal">
       <div class="card">
         <div class="card-header">
-          <i class="fas fa-times close-button text-white" @click="closeModal"></i>
           <h1 class="mb-1">Adicionar bolsa</h1>
           <p>Filtre e adicione as bolsas de seu interesse.</p>
         </div>
@@ -40,46 +39,23 @@ import ScholarshipTable from '../pages/minha-conta/bolsas-favoritas/ScholarshipT
 import InputSelect from './InputSelect.vue';
 import InputCheckBox from './InputCheckbox.vue';
 import InputRange from './InputRange.vue';
+import CitiesService from '~/services/CitiesService';
+import CoursesService from '~/services/CoursesService';
+import { ICourse } from '~/models/ICourse';
+
 type option = { label: string; id: string };
 
 @Component({ components: { InputSelect, InputCheckBox, InputRange, ScholarshipTable } })
 export default class Modal extends Vue {
   @Prop({ required: true }) show!: boolean;
-  public city: string = 'São José dos Campos';
-  public cityOptions: option[] = [
-    {
-      label: 'São José dos Campos',
-      id: 'sjc',
-    },
-    {
-      label: 'Jacareí',
-      id: 'jacarei',
-    },
-    {
-      label: 'Caçapava',
-      id: 'cacapava',
-    },
-    {
-      label: 'Taubaté',
-      id: 'taubate',
-    },
-  ];
+  public citiesService = new CitiesService();
+  public coursesService = new CoursesService();
 
-  public course: string = 'Engenharia';
-  public courseOptions: option[] = [
-    {
-      label: 'Engenharia',
-      id: 'engenharia',
-    },
-    {
-      label: 'Administração',
-      id: 'administracao',
-    },
-    {
-      label: 'Psicologia',
-      id: 'psicologia',
-    },
-  ];
+  public city: option = { label: '', id: '' };
+  public cityOptions: option[] = [];
+
+  public course: option = { label: '', id: '' };
+  public courseOptions: option[] = [];
 
   public kindOfStudy = {
     faceToface: false,
@@ -100,7 +76,23 @@ export default class Modal extends Vue {
     }
   }
 
-  public mounted(): void {}
+  public mounted(): void {
+    this.getCities();
+    this.getCourses();
+  }
+
+  public getCities(): void {
+    this.cityOptions = this.citiesService.getCities();
+    this.city = this.cityOptions[0];
+  }
+
+  public getCourses(): void {
+    const courses: ICourse[] = this.coursesService.getCourses();
+    this.courseOptions = courses.map(course => {
+      return { id: course.id, label: course.name };
+    });
+    this.course = this.courseOptions[0];
+  }
 
   public disableOverflowBody(): void {}
 
@@ -134,14 +126,6 @@ export default class Modal extends Vue {
 
 .card-header {
   margin-bottom: 50px;
-}
-
-.close-button {
-  position: absolute;
-  right: 0;
-  top: -50px;
-  font-size: 3em;
-  cursor: pointer;
 }
 
 .grid {

@@ -1,44 +1,58 @@
 <template>
-  <div class="scholarship-row d-flex w-100">
+  <div v-if="data" class="scholarship-row d-flex w-100">
     <div class="d-flex select-logo">
       <InputCheckBox id="my-check" :value.sync="checked" class="mr-4" />
-      <img src="~/static/images/anhanguera.png" alt="Anhanguera" />
+      <div class="d-flex center logo">
+        <img :src="data.university.logoUrl" :alt="data.university.name" />
+      </div>
     </div>
     <div class="d-flex between name-value">
       <div>
-        <p class="text-bold text-primary-variant mb-1">Administração</p>
-        <small>Bacherelado</small>
+        <p class="text-bold text-primary-variant mb-1">{{ data.course.name }}</p>
+        <small>{{ data.course.level }}</small>
       </div>
-      <div class="d-flex column">
-        <p>Bolsa de <span class="text-bold text-success">50%</span></p>
-        <p class="text-bold text-success">R$ 374/mês</p>
+      <div class="text-right">
+        <p>
+          Bolsa de <span class="text-bold text-success">{{ data.discountPercentage }}%</span>
+        </p>
+        <p class="text-bold text-success">{{ data.priceWithDiscount | currencyBRL }}/mês</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import InputCheckBox from '~/components/utils/InputCheckbox.vue';
+import { IScholarship } from '~/models/IScholarshop';
 
 @Component({ components: { InputCheckBox } })
 export default class ScholarshipRow extends Vue {
-  public checked: boolean = true;
+  @Prop({ default: () => [] }) data!: IScholarship;
+  public checked: boolean = false;
 }
 </script>
 
 <style lang="scss" scoped>
-img {
-  max-width: 150px;
-}
-
 .scholarship-row {
   padding: 20px 0;
+  height: 100px;
   border-bottom: 1px solid $muted;
 }
 
 .select-logo {
   flex: 1;
+  height: 100%;
+}
+
+.logo {
+  flex: 1;
+  height: 100%;
+
+  img {
+    max-width: 150px;
+    max-height: 100%;
+  }
 }
 
 .name-value {
