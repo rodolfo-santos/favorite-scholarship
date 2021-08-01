@@ -1,69 +1,74 @@
-# favoriteScholarship
+# Favorite Scholarship
 
-## Build Setup
+Solução front-end desenvolvido em [NuxtJS](https://nuxtjs.org/) com TypeScript (vue-class-components) e SASS.
 
-```bash
-# install dependencies
-$ npm install
+## Desafio
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+Este desafio foi proposto pela Quero Educação. este tinha o seguintes requisitos de avaliação:
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+- O projeto possui uma única página, com a lista de favoritos e um modal para a busca de cursos;
+- A clicar em Adicionar curso, deve abrir o modal de busca;
+- A busca deve conter os seguintes filtros:
+  - Cidade;
+  - Curso;
+  - Modalidade (Presencial/EaD);
+  - Preço;
+- A lista de cursos deve ter ordenação por nome da faculdade;
+- Múltiplos cursos podem ser selecionados e adicionados à lista de favoritos;
+- O botão Adicionar bolsa(s) deve ficar desabilitado enquanto não houver cursos selecionados;
+- Os cursos podem ser removidos da lista de favoritos, através do botão Excluir;
+- O botão Ver oferta não leva a lugar algum;
+- Bolsas com { enabled: false }, devem aparecer com o botão Indisponível;
+- A lista de favoritos deve respeitar o semestre selecionado.
 
-# generate static project
-$ npm run generate
+[Saber Mais...](https://github.com/quero-edu/front-end-test-quero)
+
+## Links
+
+- Live Demo: [Clique Aqui](https://favoritescholarship.herokuapp.com/minha-conta/bolsas-favoritas)
+
+## Pricipios de Desenvolvimento
+
+- Atomic Design
+- Mobile First
+- Programação Orientada a Objetos
+- Testes Unitários com Jest
+
+- Website - [https://rodolfo-santos.com.br](https://rodolfo-santos.com.br)
+- Linkedin - [@rodolfosantos29](https://www.linkedin.com/in/rodolfosantos29/)
+
+## Project setup
+
+```
+npm install
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### Compiles and hot-reloads for development
 
-## Special Directories
+```
+npm run serve
+```
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+### Compiles and minifies for production
 
-### `assets`
+```
+npm run build
+```
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+### Run your unit tests
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+```
+npm run test:unit
+```
 
-### `components`
+### Lints and fixes files
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+```
+npm run lint
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+### Run production
 
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+```
+npm run start
+```
