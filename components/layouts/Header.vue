@@ -12,13 +12,7 @@ import TopBar from './Header/TopBar.vue';
 import MenuNav from './Header/MenuNav.vue';
 import Breadcrumb from './Header/Breadcrumb.vue';
 
-@Component({
-  components: {
-    TopBar,
-    MenuNav,
-    Breadcrumb,
-  },
-})
+@Component({ components: { TopBar, MenuNav, Breadcrumb } })
 export default class Header extends Vue {}
 </script>
 

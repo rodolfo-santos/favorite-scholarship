@@ -2,7 +2,7 @@ import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators';
 import { ICrumb } from './../models/ICrumb';
 
 @Module({ namespaced: true, stateFactory: true })
-export default class ChartStore extends VuexModule {
+export default class Store extends VuexModule {
   public breadcrumb: ICrumb[] = [{ name: 'Home', link: '/' }];
 
   @Mutation

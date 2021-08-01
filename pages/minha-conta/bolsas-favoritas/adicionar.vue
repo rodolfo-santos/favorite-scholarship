@@ -6,7 +6,7 @@
     :show="showModal"
     :disable-confirm-button="disableConfirmButton"
     @close="closeAddModal"
-    @confirm="addCourses"
+    @confirm="addListToFavorites"
   >
     <ScholarshipFilter @update="updateList" />
     <ScholarshipTable :list="scholarshipList" @updateListToAdd="updateListToAdd" />
@@ -15,10 +15,13 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 import Modal from '~/components/utils/Modal.vue';
 import ScholarshipTable from '~/components/pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
 import ScholarshipFilter from '~/components/pages/minha-conta/bolsas-favoritas/ScholarshipFilter.vue';
 import { IScholarship } from '~/models/IScholarship';
+
+const scholarship = namespace('Scholarship');
 
 @Component({ components: { Modal, ScholarshipTable, ScholarshipFilter } })
 export default class AddCourse extends Vue {
@@ -26,6 +29,9 @@ export default class AddCourse extends Vue {
   public scholarshipList: IScholarship[] = [];
   public scholarshipListToAdd: IScholarship[] = [];
   public disableConfirmButton: boolean = true;
+
+  @scholarship.Action
+  public addFavorite!: (scholarships: IScholarship[]) => void;
 
   @Watch('scholarshipListToAdd')
   public onupdateListToAddChanged(value: IScholarship[]) {
@@ -35,10 +41,6 @@ export default class AddCourse extends Vue {
 
   public mounted(): void {
     this.showAddModal();
-  }
-
-  public addCourses(): void {
-    window.alert('Cursos Adicionados!');
   }
 
   public showAddModal(): void {
@@ -56,6 +58,10 @@ export default class AddCourse extends Vue {
 
   public updateListToAdd(list: IScholarship[]): void {
     this.scholarshipListToAdd = list;
+  }
+
+  public addListToFavorites(): void {
+    this.addFavorite(this.scholarshipListToAdd);
   }
 }
 </script>

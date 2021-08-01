@@ -10,6 +10,13 @@
     </nav>
     <div class="grid">
       <AddScholarshipCard class="card-grid" @click="openAddModal()" />
+      <ScholarshipCard
+        v-for="(scholarship, index) in favoriteScholarships"
+        :key="index"
+        :data="scholarship"
+        :index="index"
+        class="card-grid"
+      />
     </div>
     <NuxtChild />
   </main>
@@ -21,10 +28,13 @@ import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
 import Title from '~/components/utils/Title.vue';
 import AddScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/AddScholarshipCard.vue';
+import ScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/ScholarshipCard.vue';
+import { IScholarship } from '~/models/IScholarship';
 
+const scholarship = namespace('Scholarship');
 const store = namespace('Store');
 
-@Component({ components: { Title, AddScholarshipCard } })
+@Component({ components: { Title, AddScholarshipCard, ScholarshipCard } })
 export default class BolsasFavoritas extends Vue {
   public breadcrumb: ICrumb[] = [
     { name: 'Home', link: '/' },
@@ -32,11 +42,18 @@ export default class BolsasFavoritas extends Vue {
     { name: 'Bolsas Favoritas', link: '/minha-conta/bolsas-favoritas' },
   ];
 
+  @scholarship.State
+  public favoriteScholarships!: IScholarship[];
+
   @store.Action
   public changeBreadcrumb!: (breadcrumbs: ICrumb[]) => void;
 
+  @scholarship.Action
+  public getFavoritesListFromLocalStorage!: () => void;
+
   public created(): void {
     this.changeBreadcrumb(this.breadcrumb);
+    this.getFavoritesListFromLocalStorage();
   }
 
   public changeSemester($event: Event): void {
