@@ -1,3 +1,10 @@
 import Vue from 'vue';
 
-Vue.filter('currencyBRL', (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+const filters = {
+  filters: {
+    currencyBRL: (value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+  },
+};
+
+Vue.mixin(filters);
+export default filters;

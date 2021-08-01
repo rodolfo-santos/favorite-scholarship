@@ -1,37 +1,33 @@
 <template>
-  <transition name="fade" mode="out-in" appear>
-    <div v-if="show" class="overlay d-flex center" @click.self="closeModal">
-      <div class="modal__card">
-        <div class="modal__header mb-4">
-          <h1 class="mb-1">{{ title }}</h1>
-          <p v-if="subtitle">{{ subtitle }}</p>
-        </div>
+  <div v-if="show" class="overlay d-flex center" @click.self="closeModal">
+    <div class="modal__card">
+      <div class="modal__header mb-4">
+        <h1 class="mb-1">{{ title }}</h1>
+        <p v-if="subtitle">{{ subtitle }}</p>
+      </div>
 
-        <div class="modal__body">
-          <slot></slot>
-        </div>
+      <div class="modal__body">
+        <slot></slot>
+      </div>
 
-        <div class="modal__footer d-flex right mt-4">
-          <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
-          <button class="btn-secondary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
-        </div>
+      <div class="modal__footer d-flex right mt-4">
+        <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
+        <button class="btn-secondary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import ScholarshipTable from '../pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
-import InputSelect from './InputSelect.vue';
-import InputCheckBox from './InputCheckbox.vue';
-import InputRange from './InputRange.vue';
 
-@Component({ components: { InputSelect, InputCheckBox, InputRange, ScholarshipTable } })
+@Component({ components: { ScholarshipTable } })
 export default class Modal extends Vue {
   @Prop({ required: true }) show!: boolean;
   @Prop({ required: true }) title!: string;
   @Prop() subtitle!: string;
+
   @Prop({ default: 'Confirmar' }) confirmText!: string;
   @Prop({ default: 'Cancelar' }) cancelText!: string;
   @Prop({ default: false }) disableConfirmButton!: boolean;
