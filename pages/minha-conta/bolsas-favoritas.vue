@@ -31,7 +31,7 @@ import ScholarshipCard from '~/components/pages/minha-conta/bolsas-favoritas/Sch
 import { IScholarship } from '~/models/IScholarship';
 
 const scholarship = namespace('Scholarship');
-const store = namespace('Store');
+const breadcrumb = namespace('Breadcrumb');
 
 @Component({ components: { Title, AddScholarshipCard, ScholarshipCard } })
 export default class BolsasFavoritas extends Vue {
@@ -47,7 +47,7 @@ export default class BolsasFavoritas extends Vue {
   @scholarship.State
   public favoriteScholarships!: IScholarship[];
 
-  @store.Action
+  @breadcrumb.Action
   public changeBreadcrumb!: (breadcrumbs: ICrumb[]) => void;
 
   @scholarship.Action

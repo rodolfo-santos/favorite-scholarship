@@ -7,7 +7,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
 
-const store = namespace('Store');
+const breadcrumb = namespace('Breadcrumb');
 
 @Component({ components: {} })
 export default class PreMatriculas extends Vue {
@@ -16,7 +16,7 @@ export default class PreMatriculas extends Vue {
     { name: 'Pré-Matrículas', link: '/pre-matriculas' },
   ];
 
-  @store.Action
+  @breadcrumb.Action
   public changeBreadcrumb!: (breadcrumbs: ICrumb[]) => void;
 
   public created(): void {

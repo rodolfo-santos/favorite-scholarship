@@ -15,11 +15,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import { ICrumb } from '~/models/ICrumb';
-const store = namespace('Store');
+const breadcrumb = namespace('Breadcrumb');
 
 @Component({ components: {} })
 export default class extends Vue {
-  @store.State
+  @breadcrumb.State
   public breadcrumb!: ICrumb[];
 
   public get backPage(): ICrumb {
