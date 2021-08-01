@@ -14,6 +14,8 @@ export default {
     script: [{ hid: 'fontawesome', src: 'https://kit.fontawesome.com/35b4ab768d.js', defer: true, crossorigin: 'anonymous' }],
   },
 
+  mode: 'spa',
+
   css: ['~/assets/scss/global.scss'],
 
   plugins: ['~plugins/filters.ts'],
