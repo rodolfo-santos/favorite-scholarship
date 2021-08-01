@@ -1,13 +1,13 @@
 <template>
-  <div class="input-select">
+  <div class="select">
     <label v-if="label" class="text-bold text-uppercase d-flex mb-1"> {{ label }}</label>
-    <div class="d-flex between px-2 py-2" :class="{ 'select-text': type === 'text', 'select-box': type === 'box' }" @click="toogleList">
+    <div class="d-flex between px-2 py-2" :class="{ select__text: type === 'text', select__box: type === 'box' }" @click="toogleList">
       <span class="mr-1">{{ syncedValue.label }}</span>
       <i class="fas fa-chevron-down"></i>
     </div>
 
-    <div class="select-options w-100" :class="{ 'd-none': !showList }">
-      <div v-for="option in options" :key="option.id" class="option d-flex">
+    <div class="select__options w-100" :class="{ 'd-none': !showList }">
+      <div v-for="option in options" :key="option.id" class="select__option d-flex">
         <input :id="option.id" v-model="syncedValue" type="radio" name="option" :value="option" />
         <label :for="option.id" class="w-100 py-1 px-2" @click="toogleList"> {{ option.label }} </label>
       </div>
@@ -48,49 +48,49 @@ export default class InputSelect extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.input-select {
+.select {
   position: relative;
-}
 
-.select-text {
-  color: $primary;
-  cursor: pointer;
-  i {
-    font-size: 0.75rem;
-  }
-}
-
-.select-box {
-  border: solid 1px $muted;
-  border-radius: 5px;
-
-  i {
-    font-size: 0.75rem;
-  }
-}
-
-.select-options {
-  border: solid 1px $muted;
-  position: absolute;
-  background: #fff;
-  max-height: 250px;
-  overflow-y: auto;
-  z-index: 99;
-  min-width: 200px;
-  right: 0;
-
-  input[type='radio'] {
-    display: none;
-  }
-
-  label {
+  &__text {
+    color: $primary;
     cursor: pointer;
+    i {
+      font-size: 0.75rem;
+    }
   }
-}
 
-.option {
-  &:hover {
-    background-color: #eee;
+  &__box {
+    border: solid 1px $muted;
+    border-radius: 5px;
+
+    i {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__options {
+    border: solid 1px $muted;
+    position: absolute;
+    background: #fff;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 99;
+    min-width: 200px;
+    right: 0;
+  }
+
+  &__option {
+    input[type='radio'] {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    &:hover {
+      background-color: #eee;
+    }
   }
 }
 </style>

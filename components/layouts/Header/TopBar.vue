@@ -1,10 +1,10 @@
 <template>
   <div class="topbar container">
-    <HowItWorks class="how-it-works" />
-    <div class="d-flex center logo">
+    <HowItWorks class="topbar__box" />
+    <div class="topbar__box d-flex center logo">
       <img src="~/static/images/logo-querobolsa.svg" alt="Logotipo Quero Bolsa" class="py-1" />
     </div>
-    <Profile class="profile" />
+    <Profile class="topbar__box" />
   </div>
 </template>
 
@@ -18,10 +18,6 @@ export default class TopBar extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-img {
-  max-height: 75px;
-}
-
 .topbar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -35,20 +31,19 @@ img {
 
 @include large {
   .topbar {
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
-  }
 
-  .how-it-works {
-    grid-column: 1 / 6;
-  }
+    &__box:first-child {
+      grid-column: 1 / 6;
+    }
 
-  .logo {
-    grid-column: 6 / 8;
-  }
+    &__box {
+      grid-column: 6 / 8;
+    }
 
-  .profile {
-    grid-column: 8 / 13;
+    &__box:last-child {
+      grid-column: 8 / 13;
+    }
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <transition v-if="show" name="fade" mode="out-in">
-    <div class="overlay d-flex center" @click.self="closeModal">
+  <transition name="fade" mode="out-in" appear>
+    <div v-if="show" class="overlay d-flex center" @click.self="closeModal">
       <div class="modal__card">
         <div class="modal__header mb-4">
           <h1 class="mb-1">{{ title }}</h1>
@@ -13,7 +13,7 @@
 
         <div class="modal__footer d-flex right mt-4">
           <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
-          <button class="bg-primary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
+          <button class="btn-secondary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, PropSync, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import ScholarshipTable from '../pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
 import InputSelect from './InputSelect.vue';
 import InputCheckBox from './InputCheckbox.vue';
@@ -35,6 +35,7 @@ export default class Modal extends Vue {
   @Prop({ default: 'Confirmar' }) confirmText!: string;
   @Prop({ default: 'Cancelar' }) cancelText!: string;
   @Prop({ default: false }) disableConfirmButton!: boolean;
+  public test: boolean = false;
 
   @Watch('show')
   public onShowChanged() {
@@ -69,50 +70,27 @@ export default class Modal extends Vue {
   background-color: rgba(#000000, $alpha: 0.7);
 }
 
-.modal__card {
-  width: 100%;
-  height: 85vh;
-  max-width: 900px;
-  background-color: #ffffff;
-  overflow-y: auto;
+.modal {
+  &__card {
+    width: 100%;
+    height: 85vh;
+    max-width: 900px;
+    background-color: #ffffff;
+    overflow-y: auto;
 
-  position: relative;
-  padding: 25px;
+    position: relative;
+    padding: 25px;
+  }
 
   &__header {
     margin-bottom: 50px;
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px;
-}
-
-.grid-box {
-  width: auto;
-  grid-column: 1;
-}
-
 @include extra-large {
-  .modal__card {
-    padding: 50px;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
-  }
-
-  .grid-box {
-    width: auto;
-    &:nth-child(odd) {
-      grid-column: 1;
-    }
-    &:nth-child(even) {
-      grid-column: 2;
+  .modal {
+    &__card {
+      padding: 50px;
     }
   }
 }

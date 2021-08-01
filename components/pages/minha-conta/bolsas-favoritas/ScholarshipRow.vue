@@ -1,12 +1,12 @@
 <template>
-  <div v-if="data" class="scholarship-row d-flex w-100">
-    <div class="d-flex select-logo">
-      <InputCheckBox id="my-check" :value.sync="checked" />
-      <div class="d-flex center logo">
+  <div v-if="data" class="row d-flex w-100">
+    <div class="row__box d-flex">
+      <InputCheckBox :value.sync="checked" />
+      <div class="row__logo d-flex center">
         <img :src="data.university.logoUrl" :alt="data.university.name" />
       </div>
     </div>
-    <div class="name-value">
+    <div class="row__box">
       <div class="mb-4">
         <p class="text-bold text-primary-variant mb-1">{{ data.course.name }}</p>
         <small>{{ data.course.level }}</small>
@@ -39,49 +39,40 @@ export default class ScholarshipRow extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.scholarship-row {
+.row {
   padding: 20px 0;
   min-height: 200px;
   border-bottom: 1px solid $muted;
-}
 
-.select-logo {
-  flex: 1;
-  height: 50%;
-}
+  &__box {
+    &:first-child {
+      flex: 1;
+    }
 
-.logo {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  padding: 0 15px;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
-
-.name-value {
-  flex: 1;
-}
-
-@include extra-large {
-  .logo {
-    flex: 1;
-    height: 100%;
-    padding: 50px;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
+    &:last-child {
+      flex: 1;
     }
   }
 
-  .name-value {
-    flex: 2;
-    display: flex;
-    justify-content: space-between;
+  &__logo {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+  }
+}
+
+@include extra-large {
+  .row {
+    &__logo {
+      padding: 50px;
+    }
+
+    &__box:last-child {
+      flex: 2;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 </style>

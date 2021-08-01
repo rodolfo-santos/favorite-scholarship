@@ -62,6 +62,7 @@ export default class AddCourse extends Vue {
 
   public addListToFavorites(): void {
     this.addFavorite(this.scholarshipListToAdd);
+    this.closeAddModal();
   }
 }
 </script>

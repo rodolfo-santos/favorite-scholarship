@@ -1,8 +1,8 @@
 <template>
-  <div class="grid mb-4">
-    <InputSelect :value.sync="city" :options="cityOptions" label="Selecione sua cidade" class="grid-box" />
-    <InputSelect :value.sync="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="grid-box" />
-    <div class="grid-box">
+  <div class="filter mb-4">
+    <InputSelect :value.sync="city" :options="cityOptions" label="Selecione sua cidade" class="filter__box" />
+    <InputSelect :value.sync="course" :options="courseOptions" label="Selecione o curso de sua preferência" class="filter__box" />
+    <div class="filter__box">
       <label class="text-bold text-uppercase d-flex mb-1">Como você quer estudar?</label>
       <div class="d-flex">
         <InputCheckBox label="Presencial" class="mt-4 mr-4" :value.sync="kindOfStudy.faceToface" />
@@ -94,4 +94,33 @@ export default class ScholarshipFilter extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.filter {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+}
+
+.filter__box {
+  width: auto;
+  grid-column: 1;
+}
+
+@include extra-large {
+  .filter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+
+  .filter__box {
+    width: auto;
+    &:nth-child(odd) {
+      grid-column: 1;
+    }
+    &:nth-child(even) {
+      grid-column: 2;
+    }
+  }
+}
+</style>

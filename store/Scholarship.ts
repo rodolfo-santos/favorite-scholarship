@@ -12,7 +12,9 @@ export default class Scholarship extends VuexModule {
 
   @Mutation
   public ADD_FAVORITES(scholarships: IScholarship[]): void {
-    this.favoriteScholarships = this.favoriteScholarships.concat(scholarships);
+    const favoritesConcated: IScholarship[] = this.favoriteScholarships.concat(scholarships);
+    this.favoriteScholarships = favoritesConcated;
+    this.favoriteScholarships = favoritesConcated.filter((scholarship, i) => this.favoriteScholarships.indexOf(scholarship) === i);
     localStorage.setItem('favorites_scholarships', JSON.stringify(this.favoriteScholarships));
   }
 

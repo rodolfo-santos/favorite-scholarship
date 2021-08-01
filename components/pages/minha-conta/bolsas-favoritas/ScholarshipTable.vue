@@ -1,17 +1,10 @@
 <template>
-  <div>
-    <div class="table-header pb-4 d-flex between">
+  <div class="table">
+    <div class="table__header pb-4 d-flex between">
       <span class="text-bold">Resultado: </span>
       <span class="text-bold d-flex">
         <span> Ordenar por</span>
-        <InputSelect
-          :value.sync="orderBy"
-          :options="[
-            { id: 'nomedafaculdade', label: 'Nome da Faculdade' },
-            { id: 'preco', label: 'Preço' },
-          ]"
-          type="text"
-        />
+        <InputSelect :value.sync="orderBy" :options="orderOptions" type="text" />
       </span>
     </div>
     <div class="w-100">
@@ -33,6 +26,10 @@ export default class ScholarshipTable extends Vue {
   public scholarshipService = new ScholarshipService();
   public orderBy = { id: 'nomedafaculdade', label: 'Nome da Faculdade' };
   public listToAdd: IScholarship[] = [];
+  public orderOptions = [
+    { id: 'nomedafaculdade', label: 'Nome da Faculdade' },
+    { id: 'preco', label: 'Preço' },
+  ];
 
   @Watch('orderBy')
   public onOrderByChanged(): void {
@@ -56,7 +53,7 @@ export default class ScholarshipTable extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.table-header {
+.table__header {
   border-bottom: 1px solid $muted;
 }
 </style>

@@ -31,12 +31,14 @@ export default class FooterWidget extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.widget__title {
-  font-size: 1.3rem;
-}
+.widget {
+  &__title {
+    font-size: 1.3rem;
+  }
 
-.widget__description {
-  font-size: 1.1rem;
+  &__description {
+    font-size: 1.1rem;
+  }
 }
 
 i {
