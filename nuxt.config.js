@@ -28,8 +28,8 @@ export default {
     scss: ['~/assets/scss/*.scss'],
   },
 
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-  },
+  // server: {
+  //   host: '0.0.0.0',
+  //   port: 8080,
+  // },
 };
