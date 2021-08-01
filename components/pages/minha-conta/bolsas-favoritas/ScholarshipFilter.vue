@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <InputRange :price.sync="price" class="w-100" />
+    <InputRange :price.sync="price" class="w-100" min="200" max="1500" />
   </div>
 </template>
 

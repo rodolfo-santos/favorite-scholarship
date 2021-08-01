@@ -1,17 +1,17 @@
 <template>
   <transition v-if="show" name="fade" mode="out-in">
     <div class="overlay d-flex center" @click.self="closeModal">
-      <div class="card">
-        <div class="card-header">
+      <div class="modal__card">
+        <div class="modal__header mb-4">
           <h1 class="mb-1">{{ title }}</h1>
           <p v-if="subtitle">{{ subtitle }}</p>
         </div>
 
-        <div class="card-body">
+        <div class="modal__body">
           <slot></slot>
         </div>
 
-        <div class="d-flex right card-footer mt-4">
+        <div class="modal__footer d-flex right mt-4">
           <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
           <button class="bg-primary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
         </div>
@@ -69,7 +69,7 @@ export default class Modal extends Vue {
   background-color: rgba(#000000, $alpha: 0.7);
 }
 
-.card {
+.modal__card {
   width: 100%;
   height: 85vh;
   max-width: 900px;
@@ -78,10 +78,10 @@ export default class Modal extends Vue {
 
   position: relative;
   padding: 25px;
-}
 
-.card-header {
-  margin-bottom: 50px;
+  &__header {
+    margin-bottom: 50px;
+  }
 }
 
 .grid {
@@ -96,7 +96,7 @@ export default class Modal extends Vue {
 }
 
 @include extra-large {
-  .card {
+  .modal__card {
     padding: 50px;
   }
 

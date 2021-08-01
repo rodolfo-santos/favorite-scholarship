@@ -1,17 +1,17 @@
 <template>
-  <div class="py-3 bg-primary-variant">
-    <div class="d-xl-flex" :class="{ 'd-none': !fixedLargeContent, 'd-flex center': fixedLargeContent }">
-      <i class="text-white mr-2" :class="icon"></i>
-      <div class="d-flex column text-white">
-        <span class="text-bold w-100 mb-1 text">{{ text }}</span>
-        <span class="text-bold w-100 description">{{ description }}</span>
+  <div class="widget py-3 bg-primary-variant">
+    <div class="widget__mobile d-xl-none" :class="{ 'd-flex center': !fixedLargeContent, 'd-none': fixedLargeContent }">
+      <div class="widget__content d-flex column text-white">
+        <i class="mb-1" :class="icon"></i>
+        <span class="w-100 mb-1 text">{{ shortText }}</span>
       </div>
     </div>
 
-    <div class="d-xl-none" :class="{ 'd-flex center': !fixedLargeContent, 'd-none': fixedLargeContent }">
+    <div class="widget__desktop d-xl-flex" :class="{ 'd-none': !fixedLargeContent, 'd-flex center': fixedLargeContent }">
+      <i class="text-white mr-2" :class="icon"></i>
       <div class="d-flex column text-white">
-        <i class="mb-1" :class="icon"></i>
-        <span class="w-100 mb-1 text">{{ shortText }}</span>
+        <span class="widget__title text-bold w-100 mb-1">{{ text }}</span>
+        <span class="widget__description text-bold w-100">{{ description }}</span>
       </div>
     </div>
   </div>
@@ -31,15 +31,15 @@ export default class FooterWidget extends Vue {
 </script>
 
 <style lang="scss" scoped>
-i {
-  font-size: 3rem;
-}
-
-.text {
+.widget__title {
   font-size: 1.3rem;
 }
 
-.description {
+.widget__description {
   font-size: 1.1rem;
+}
+
+i {
+  font-size: 3rem;
 }
 </style>

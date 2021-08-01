@@ -9,7 +9,7 @@
       </ul>
     </nav>
     <div class="grid">
-      <AddScholarshipCard class="card-grid" @click="openAddModal()" />
+      <AddScholarshipCard class="card-grid" />
       <ScholarshipCard
         v-for="(scholarship, index) in favoriteScholarships"
         :key="index"
@@ -60,10 +60,6 @@ export default class BolsasFavoritas extends Vue {
     document.querySelector('li.active')?.classList.remove('active');
     ($event.target as HTMLElement).classList.add('active');
   }
-
-  public openAddModal(): void {
-    this.$router.push('/minha-conta/bolsas-favoritas/adicionar');
-  }
 }
 </script>
 
@@ -72,11 +68,6 @@ export default class BolsasFavoritas extends Vue {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 25px;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
 }
 
 .active {

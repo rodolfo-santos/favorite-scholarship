@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-none d-xl-flex info h-100">
+    <div class="d-none d-xl-flex h-100">
       <div class="text-primary d-flex how-it-works pr-4">
         <i class="far fa-question-circle mr-2"></i>
         <span class="text-bold"> Como funciona </span>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="d-flex left d-xl-none h-100 how-it-works">
+    <div class="d-flex left d-xl-none h-100">
       <div class="d-flex column">
         <i class="far fa-question-circle"></i>
         <span>Ajuda</span>

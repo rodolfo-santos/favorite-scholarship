@@ -1,6 +1,6 @@
 <template>
-  <footer class="mt-4">
-    <div class="xl-container d-flex between footer-top">
+  <footer class="footer mt-4">
+    <div class="footer__top xl-container d-flex between">
       <FooterWidget
         v-for="(widget, index) in widgets"
         :key="index"
@@ -9,10 +9,10 @@
         :short-text="widget.shortText"
         :description="widget.description"
         :fixed-large-content="widget.fixed"
-        class="footer-widget"
+        class="footer__widget"
       />
     </div>
-    <div class="d-flex center bg-primary text-white footer-bottom">Feito com <i class="far fa-heart mx-1"></i> pela Quero Educação</div>
+    <div class="d-flex center bg-primary text-white footer__bottom">Feito com <i class="far fa-heart mx-1"></i> pela Quero Educação</div>
   </footer>
 </template>
 
@@ -54,41 +54,38 @@ export default class Footer extends Vue {
 </script>
 
 <style lang="scss" scoped>
-footer {
+.footer {
   background: $primary;
 
-  .container {
+  &__top,
+  &__bottom {
     height: 200px;
   }
-}
 
-.footer-widget {
-  margin: 2px;
-}
+  &__widget {
+    margin: 2px;
 
-.footer-widget:nth-child(1) {
-  width: 100%;
-}
-.footer-widget:not(.footer-widget:nth-child(1)) {
-  flex: 1;
-}
+    &:nth-child(1) {
+      width: 100%;
+    }
 
-.footer-bottom {
-  height: 200px;
+    &:not(.footer__widget:nth-child(1)) {
+      flex: 1;
+    }
+  }
 }
 
 @include extra-large {
-  footer {
+  .footer {
     background: $primary-variant;
-  }
 
-  .footer-top {
-    min-height: 150px;
-  }
+    &__top {
+      min-height: 150px;
+    }
 
-  .footer-widget:nth-child(1) {
-    width: auto;
-    flex: 1;
+    &__widget:nth-child(1) {
+      flex: 1;
+    }
   }
 }
 </style>

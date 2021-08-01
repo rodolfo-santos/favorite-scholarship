@@ -4,16 +4,18 @@
       <label class="text-bold text-uppercase d-flex mb-1">Até quanto pode pagar ?</label>
       <span>{{ syncedPrice | currencyBRL }}</span>
     </div>
-    <input v-model.number="syncedPrice" type="range" min="100" max="10000" class="w-100" />
+    <input v-model.number="syncedPrice" type="range" :min="min" :max="max" class="w-100" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, PropSync, Vue } from 'vue-property-decorator';
+import { Component, Prop, PropSync, Vue } from 'vue-property-decorator';
 
 @Component({ components: {} })
 export default class InputRange extends Vue {
   @PropSync('price', { type: Number }) public syncedPrice!: number;
+  @Prop({ default: 0 }) public min!: string;
+  @Prop({ default: 1000 }) public max!: string;
 }
 </script>
 
