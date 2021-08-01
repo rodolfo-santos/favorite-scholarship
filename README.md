@@ -34,6 +34,8 @@ Este desafio foi proposto pela Quero Educação. este tinha o seguintes requisit
 - Programação Orientada a Objetos
 - Testes Unitários com Jest
 
+## Autor
+
 - Website - [https://rodolfo-santos.com.br](https://rodolfo-santos.com.br)
 - Linkedin - [@rodolfosantos29](https://www.linkedin.com/in/rodolfosantos29/)
 
