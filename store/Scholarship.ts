@@ -32,8 +32,10 @@ export default class Scholarship extends VuexModule {
 
   @Action
   public getFavoritesListFromLocalStorage(): void {
-    const cart: string | null = localStorage.getItem('favorites_scholarships');
-    if (cart) this.context.commit('SET_FAVORITES', JSON.parse(cart));
+    if (process.client) {
+      const list: string | null = localStorage.getItem('favorites_scholarships');
+      if (list) this.context.commit('SET_FAVORITES', JSON.parse(list));
+    }
   }
 
   @Action
