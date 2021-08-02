@@ -27,7 +27,7 @@ export default class Scholarship extends VuexModule {
   @Mutation
   public DELETE_ALL_FAVORITE(): void {
     this.favoriteScholarships = [];
-    localStorage.setItem('cart', JSON.stringify(this.favoriteScholarships));
+    localStorage.setItem('favorites_scholarships', JSON.stringify(this.favoriteScholarships));
   }
 
   @Action
