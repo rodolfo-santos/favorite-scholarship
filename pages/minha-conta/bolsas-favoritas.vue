@@ -7,7 +7,8 @@
           v-for="(option, index) in semestersOptions"
           :key="index"
           class="semesters__item px-4 py-2 w-100 w-md-auto"
-          @click="changeSemester($event, option)"
+          :class="{ 'semesters__item--active': option === semester }"
+          @click="changeSemester(option)"
         >
           {{ option }}
         </li>
@@ -74,9 +75,7 @@ export default class BolsasFavoritas extends Vue {
     this.getFavoritesListFromLocalStorage();
   }
 
-  public changeSemester($event: Event, option: string): void {
-    document.querySelector('.semesters__item--active')?.classList.remove('semesters__item--active');
-    ($event.target as HTMLElement).classList.add('semesters__item--active');
+  public changeSemester(option: string): void {
     this.semester = option;
   }
 }
