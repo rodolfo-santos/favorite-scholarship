@@ -3,6 +3,7 @@ import { IUniversity } from './IUniversity';
 import { ICourse } from './ICourse';
 
 export interface IScholarship {
+  id: number;
   fullPrice: number;
   priceWithDiscount: number;
   discountPercentage: number;

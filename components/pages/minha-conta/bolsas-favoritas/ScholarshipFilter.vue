@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { debounceFn } from 'debounce-decorator-ts';
 import { ICourse } from '~/models/ICourse';
 import { IQuerySearch } from '~/models/IQuerySearch';
 import { IKindOfStudy } from '~/models/IKindOfStudy';
@@ -31,9 +30,9 @@ type option = { label: string; id: string };
 
 @Component({ components: { InputSelect, InputCheckBox, InputRange } })
 export default class ScholarshipFilter extends Vue {
-  public citiesService = new CitiesService();
-  public coursesService = new CoursesService();
-  public scholarshipService = new ScholarshipService();
+  public citiesService: CitiesService = new CitiesService();
+  public coursesService: CoursesService = new CoursesService();
+  public scholarshipService: ScholarshipService = new ScholarshipService();
 
   public price: number = 10000;
   public city: option = { label: '', id: '' };
@@ -54,11 +53,6 @@ export default class ScholarshipFilter extends Vue {
     return list;
   }
 
-  @Watch('query')
-  public onQUeryChanged(): void {
-    this.getScholarships();
-  }
-
   public get query(): IQuerySearch {
     return {
       city: this.city.label,
@@ -66,6 +60,11 @@ export default class ScholarshipFilter extends Vue {
       kind: this.kindList,
       priceWithDiscount: this.price,
     };
+  }
+
+  @Watch('query')
+  public onQUeryChanged(): void {
+    this.getScholarships();
   }
 
   public mounted(): void {

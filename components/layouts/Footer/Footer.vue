@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import FooterWidget from './Footer/FooterWiget.vue';
+import FooterWidget from './components/FooterWiget.vue';
 import { IWidgetFooter } from '~/models/IWidgetFooter';
 
 @Component({ components: { FooterWidget } })

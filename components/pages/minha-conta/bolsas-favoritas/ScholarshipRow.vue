@@ -29,11 +29,16 @@ import { IScholarship } from '~/models/IScholarship';
 @Component({ components: { InputCheckBox } })
 export default class ScholarshipRow extends Vue {
   @Prop({ default: () => [] }) data!: IScholarship;
+  @Prop() selected!: boolean;
   public checked: boolean = false;
 
   @Watch('checked')
   public onCheckedChanged(): void {
     this.$emit('select', this.data, this.checked);
+  }
+
+  public mounted() {
+    if (this.selected) this.checked = true;
   }
 }
 </script>

@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import DropdownButton from '~/components/utils/DropdownButton.vue';
 import { IMenuLink } from '~/models/IMenuLink';
+import DropdownButton from '~/components/utils/DropdownButton.vue';
 
 @Component({ components: { DropdownButton } })
 export default class MenuNav extends Vue {

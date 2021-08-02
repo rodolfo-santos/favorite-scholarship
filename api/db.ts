@@ -1,6 +1,7 @@
 import { IScholarship } from '../models/IScholarship';
 const db: IScholarship[] = [
   {
+    id: 1,
     fullPrice: 2139.64,
     priceWithDiscount: 706.08,
     discountPercentage: 67.0,
@@ -25,6 +26,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 2,
     fullPrice: 1227.05,
     priceWithDiscount: 515.36,
     discountPercentage: 58.0,
@@ -49,6 +51,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 3,
     fullPrice: 1487.31,
     priceWithDiscount: 520.56,
     discountPercentage: 65.0,
@@ -73,6 +76,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 4,
     fullPrice: 1668.4,
     priceWithDiscount: 617.31,
     discountPercentage: 63.0,
@@ -97,6 +101,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 5,
     fullPrice: 1447.29,
     priceWithDiscount: 477.61,
     discountPercentage: 67.0,
@@ -121,6 +126,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 6,
     fullPrice: 1461.16,
     priceWithDiscount: 1241.99,
     discountPercentage: 15.0,
@@ -145,6 +151,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 7,
     fullPrice: 1520.0,
     priceWithDiscount: 1368.0,
     discountPercentage: 10.0,
@@ -169,6 +176,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 8,
     fullPrice: 1498.0,
     priceWithDiscount: 1273.3,
     discountPercentage: 15.0,
@@ -193,6 +201,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 9,
     fullPrice: 1745.22,
     priceWithDiscount: 539.1,
     discountPercentage: 69.11,
@@ -217,6 +226,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 10,
     fullPrice: 1367.34,
     priceWithDiscount: 539.14,
     discountPercentage: 60.57,
@@ -241,6 +251,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 11,
     fullPrice: 2038.19,
     priceWithDiscount: 1259.02,
     discountPercentage: 38.24,
@@ -265,6 +276,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 12,
     fullPrice: 437.0,
     priceWithDiscount: 142.9,
     discountPercentage: 67.3,
@@ -289,6 +301,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 13,
     fullPrice: 453.0,
     priceWithDiscount: 186.82,
     discountPercentage: 58.76,
@@ -313,6 +326,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 14,
     fullPrice: 453.0,
     priceWithDiscount: 163.03,
     discountPercentage: 64.01,
@@ -337,6 +351,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 15,
     fullPrice: 499.0,
     priceWithDiscount: 159.23,
     discountPercentage: 68.09,
@@ -361,6 +376,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 16,
     fullPrice: 998.33,
     priceWithDiscount: 748.75,
     discountPercentage: 25.0,
@@ -385,6 +401,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 17,
     fullPrice: 1408.63,
     priceWithDiscount: 493.02,
     discountPercentage: 65.0,
@@ -409,6 +426,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 18,
     fullPrice: 1385.57,
     priceWithDiscount: 692.79,
     discountPercentage: 50.0,
@@ -433,6 +451,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 19,
     fullPrice: 414.14,
     priceWithDiscount: 207.07,
     discountPercentage: 50.0,
@@ -457,6 +476,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 20,
     fullPrice: 414.14,
     priceWithDiscount: 207.07,
     discountPercentage: 50.0,
@@ -481,6 +501,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 21,
     fullPrice: 428.43,
     priceWithDiscount: 278.48,
     discountPercentage: 35.0,
@@ -505,6 +526,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 22,
     fullPrice: 519.71,
     priceWithDiscount: 222.23,
     discountPercentage: 57.24,
@@ -529,6 +551,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 23,
     fullPrice: 454.56,
     priceWithDiscount: 174.01,
     discountPercentage: 61.72,
@@ -553,6 +576,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 24,
     fullPrice: 1219.86,
     priceWithDiscount: 609.93,
     discountPercentage: 50.0,
@@ -577,6 +601,7 @@ const db: IScholarship[] = [
     },
   },
   {
+    id: 25,
     fullPrice: 932.58,
     priceWithDiscount: 606.18,
     discountPercentage: 35.0,

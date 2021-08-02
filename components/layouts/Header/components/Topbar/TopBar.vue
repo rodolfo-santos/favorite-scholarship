@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HowItWorks from './Topbar/HowItWorks.vue';
-import Profile from './Topbar/Profile.vue';
+import HowItWorks from './HowItWorks.vue';
+import Profile from './Profile.vue';
 
 @Component({ components: { HowItWorks, Profile } })
 export default class TopBar extends Vue {}

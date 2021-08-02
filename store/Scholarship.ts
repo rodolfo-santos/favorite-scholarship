@@ -19,8 +19,8 @@ export default class Scholarship extends VuexModule {
   }
 
   @Mutation
-  public DELETE_FAVORITE(index: number): void {
-    this.favoriteScholarships.splice(index, 1);
+  public DELETE_FAVORITE(id: number): void {
+    this.favoriteScholarships = this.favoriteScholarships.filter(item => item.id !== id);
     localStorage.setItem('favorites_scholarships', JSON.stringify(this.favoriteScholarships));
   }
 
@@ -44,8 +44,8 @@ export default class Scholarship extends VuexModule {
   }
 
   @Action
-  public removeFavorite(index: number): void {
-    this.context.commit('DELETE_FAVORITE', index);
+  public removeFavorite(id: number): void {
+    this.context.commit('DELETE_FAVORITE', id);
   }
 
   @Action

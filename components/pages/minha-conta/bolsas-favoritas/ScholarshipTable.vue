@@ -8,7 +8,7 @@
       </span>
     </div>
     <div v-if="list.length > 0" class="w-100">
-      <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" @select="selectItem" />
+      <ScholarshipRow v-for="item in list" :key="item.id" :data="item" :selected="alreadySelected(item)" @select="selectItem" />
     </div>
     <div v-else class="table__notfound d-flex center">Nenhum resultado encontrado.</div>
   </div>
@@ -49,6 +49,10 @@ export default class ScholarshipTable extends Vue {
     else this.listToAdd = this.listToAdd.filter(el => JSON.stringify(el) !== JSON.stringify(scholarship));
 
     this.$emit('updateListToAdd', this.listToAdd);
+  }
+
+  public alreadySelected(scholarship: IScholarship) {
+    return !!this.listToAdd.find(item => item.id === scholarship.id);
   }
 }
 </script>

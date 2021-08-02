@@ -13,10 +13,10 @@
         </li>
       </ul>
     </nav>
-    <div class="grid">
-      <AddScholarshipCard />
-      <ScholarshipCard v-for="(scholarship, index) in filteredFavoriteScholarships" :key="index" :data="scholarship" :index="index" />
-    </div>
+    <transition-group name="fade" mode="out-in" class="grid">
+      <AddScholarshipCard key="addscholarship" />
+      <ScholarshipCard v-for="scholarship in filteredFavoriteScholarships" :key="scholarship.id" :data="scholarship" />
+    </transition-group>
     <NuxtChild />
   </main>
 </template>
