@@ -6,17 +6,25 @@ import ScholarshipTable from '~/components/pages/minha-conta/bolsas-favoritas/Sc
 import ScholarshipFilter from '~/components/pages/minha-conta/bolsas-favoritas/ScholarshipFilter.vue';
 
 describe('Pages - /minha-conta/bolsas-favoritas/adicionar', () => {
-  it('Should ', () => {
-    const wrapper: Wrapper<Vue> = mountComponent();
+  it('Should have the components: Modal, Filter and Table ', () => {
+    const wrapper: Wrapper<Vue> = mountAddScholarship();
+    expect(wrapper.findComponent(Modal).exists()).toBe(true);
+    expect(wrapper.findComponent(ScholarshipFilter).exists()).toBe(true);
+    expect(wrapper.findComponent(ScholarshipTable).exists()).toBe(true);
   });
 });
 
-function mountComponent(): Wrapper<Vue> {
+function mountAddScholarship(): Wrapper<Vue> {
   return mount(AddScholarship, {
+    data() {
+      return {
+        showModal: true,
+      };
+    },
     stubs: {
-      Modal,
       ScholarshipTable,
       ScholarshipFilter,
+      Modal,
     },
     store,
   });
