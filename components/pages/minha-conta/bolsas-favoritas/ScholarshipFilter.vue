@@ -86,7 +86,6 @@ export default class ScholarshipFilter extends Vue {
     this.course = this.courseOptions[0];
   }
 
-  @debounceFn(500)
   public getScholarships(): void {
     const filteredScholarships = this.scholarshipService.getScholarships(this.query);
     this.$emit('update', filteredScholarships);

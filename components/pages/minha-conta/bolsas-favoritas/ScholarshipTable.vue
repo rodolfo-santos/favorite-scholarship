@@ -7,9 +7,12 @@
         <InputSelect :value.sync="orderBy" :options="orderOptions" type="text" />
       </span>
     </div>
-    <div class="w-100">
-      <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" @select="selectItem" />
+    <div v-if="list.length > 0" class="w-100">
+      <transition-group mode="out-in">
+        <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" @select="selectItem" />
+      </transition-group>
     </div>
+    <div v-else class="table__notfound d-flex center">Nenhum resultado encontrado.</div>
   </div>
 </template>
 
@@ -55,5 +58,9 @@ export default class ScholarshipTable extends Vue {
 <style lang="scss" scoped>
 .table__header {
   border-bottom: 1px solid $muted;
+}
+
+.table__notfound {
+  min-height: 300px;
 }
 </style>

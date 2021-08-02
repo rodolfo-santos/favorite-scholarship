@@ -16,6 +16,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
+import { debounceFn } from 'debounce-decorator-ts';
 import { IScholarship } from '~/models/IScholarship';
 import Modal from '~/components/utils/Modal.vue';
 import ScholarshipTable from '~/components/pages/minha-conta/bolsas-favoritas/ScholarshipTable.vue';
@@ -25,7 +26,7 @@ const scholarship = namespace('Scholarship');
 
 @Component({ components: { Modal, ScholarshipTable, ScholarshipFilter } })
 export default class AddScholarship extends Vue {
-  public showModal: boolean = true;
+  public showModal: boolean = false;
   public scholarshipList: IScholarship[] = [];
   public scholarshipListToAdd: IScholarship[] = [];
   public disableConfirmButton: boolean = true;
@@ -39,8 +40,17 @@ export default class AddScholarship extends Vue {
     else this.disableConfirmButton = true;
   }
 
+  public mounted(): void {
+    this.showModal = true;
+  }
+
   public closeAddModal(): void {
     this.showModal = false;
+    this.goBack();
+  }
+
+  @debounceFn(500)
+  public goBack(): void {
     this.$router.go(-1);
   }
 

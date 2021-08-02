@@ -8,12 +8,17 @@
   transition: all 0.5s;
 }
 
-.slow-enter,
-.slow-leave-to {
+.v-enter,
+.v-leave-to {
   opacity: 0;
+  transform: translate3d(0, -20px, 0);
 }
 
-.slow-enter-active,
-.slow-leave-active {
-  transition: all 0.5s;
+.v-leave-to {
+  transform: translate3d(0, 20px, 0);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 1s;
 }

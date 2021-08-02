@@ -1,20 +1,24 @@
 <template>
-  <div v-if="show" class="overlay d-flex center" @click.self="closeModal">
-    <div class="modal__card">
-      <div class="modal__header mb-4">
-        <h1 class="mb-1">{{ title }}</h1>
-        <p v-if="subtitle">{{ subtitle }}</p>
-      </div>
+  <div>
+    <transition name="fade" mode="out-in" appear>
+      <div v-if="show" class="overlay d-flex center" @click.self="closeModal">
+        <div class="modal__card">
+          <div class="modal__header mb-4">
+            <h1 class="mb-1">{{ title }}</h1>
+            <p v-if="subtitle">{{ subtitle }}</p>
+          </div>
 
-      <div class="modal__body">
-        <slot></slot>
-      </div>
+          <div class="modal__body">
+            <slot></slot>
+          </div>
 
-      <div class="modal__footer d-flex right mt-4">
-        <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
-        <button class="btn-secondary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
+          <div class="modal__footer d-flex right mt-4">
+            <button class="mr-4" @click="closeModal">{{ cancelText }}</button>
+            <button class="btn-secondary text-white" :disabled="disableConfirmButton" @click="$emit('confirm')">{{ confirmText }}</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 

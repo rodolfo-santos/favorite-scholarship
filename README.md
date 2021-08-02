@@ -4,7 +4,7 @@ Solução front-end desenvolvido em [NuxtJS](https://nuxtjs.org/) com TypeScript
 
 ## Desafio
 
-Este desafio foi proposto pela Quero Educação. este tinha o seguintes requisitos de avaliação:
+Este desafio foi proposto pela Quero Educação com os seguintes requisitos de avaliação:
 
 - O projeto possui uma única página, com a lista de favoritos e um modal para a busca de cursos;
 - A clicar em Adicionar curso, deve abrir o modal de busca;
