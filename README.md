@@ -27,7 +27,7 @@ Este desafio foi proposto pela Quero Educação com os seguintes requisitos de a
 
 - Live Demo: [Clique Aqui](https://favoritescholarship.herokuapp.com/minha-conta/bolsas-favoritas)
 
-## Pricipios de Desenvolvimento
+## Pricípios de Desenvolvimento
 
 - Atomic Design
 - Mobile First
