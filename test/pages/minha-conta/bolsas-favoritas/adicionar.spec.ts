@@ -7,14 +7,14 @@ import ScholarshipFilter from '~/components/pages/minha-conta/bolsas-favoritas/S
 
 describe('Pages - /minha-conta/bolsas-favoritas/adicionar', () => {
   it('Should have the components: Modal, Filter and Table ', () => {
-    const wrapper: Wrapper<Vue> = mountAddScholarship();
+    const wrapper: Wrapper<Vue> = mountComponent();
     expect(wrapper.findComponent(Modal).exists()).toBe(true);
     expect(wrapper.findComponent(ScholarshipFilter).exists()).toBe(true);
     expect(wrapper.findComponent(ScholarshipTable).exists()).toBe(true);
   });
 });
 
-function mountAddScholarship(): Wrapper<Vue> {
+function mountComponent(): Wrapper<Vue> {
   return mount(AddScholarship, {
     data() {
       return {

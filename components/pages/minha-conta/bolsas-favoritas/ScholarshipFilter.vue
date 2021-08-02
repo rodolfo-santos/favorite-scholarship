@@ -25,6 +25,7 @@ import ScholarshipService from '~/services/ScholarshipService';
 import InputRange from '~/components/utils/InputRange.vue';
 import InputCheckBox from '~/components/utils/InputCheckbox.vue';
 import InputSelect from '~/components/utils/InputSelect.vue';
+import { IScholarship } from '~/models/IScholarship';
 
 type option = { label: string; id: string };
 
@@ -86,7 +87,7 @@ export default class ScholarshipFilter extends Vue {
   }
 
   public getScholarships(): void {
-    const filteredScholarships = this.scholarshipService.getScholarships(this.query);
+    const filteredScholarships: IScholarship[] = this.scholarshipService.getScholarships(this.query);
     this.$emit('update', filteredScholarships);
   }
 }
