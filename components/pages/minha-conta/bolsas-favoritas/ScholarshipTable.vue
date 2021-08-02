@@ -8,9 +8,7 @@
       </span>
     </div>
     <div v-if="list.length > 0" class="w-100">
-      <transition-group mode="out-in">
-        <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" @select="selectItem" />
-      </transition-group>
+      <ScholarshipRow v-for="(item, index) in list" :key="index" :data="item" @select="selectItem" />
     </div>
     <div v-else class="table__notfound d-flex center">Nenhum resultado encontrado.</div>
   </div>
