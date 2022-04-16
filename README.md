@@ -1,3 +1,32 @@
+<div align="center">
+  <img src="./docs/assets/banner.gif" />
+</div>
+
+<div align="center">
+  <a href="https://nuxtjs.org/docs/get-started/installation/">
+    <img alt="Nuxt" src="https://img.shields.io/badge/nuxt.js-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white">
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="Typescript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
+  </a>
+  <a href="https://sass-lang.com/">
+    <img alt="SASS" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white">
+  </a>
+</div>
+<div align="center">
+  <a href="https://jestjs.io/pt-BR/">
+    <img alt="Jest" src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white">
+  </a>
+  <a href="https://www.docker.com/">
+    <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white">
+  </a>
+</div>
+
+
+
+<br />
+
+
 # Favorite Scholarship
 
 Front-end solution developed in [NuxtJS](https://nuxtjs.org/) with TypeScript (vue-class-components) and SASS.
