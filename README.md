@@ -1,25 +1,25 @@
 # Favorite Scholarship
 
-Solução front-end desenvolvido em [NuxtJS](https://nuxtjs.org/) com TypeScript (vue-class-components) e SASS.
+Front-end solution developed in [NuxtJS](https://nuxtjs.org/) with TypeScript (vue-class-components) and SASS.
 
-## Desafio
+## Challenge
 
-Este desafio foi proposto pela Quero Educação com os seguintes requisitos de avaliação:
+This challenge was proposed for [Quero Educação](https://github.com/quero-edu) with the following requirements for the evaluation:
 
-- O projeto possui uma única página, com a lista de favoritos e um modal para a busca de cursos;
-- A clicar em Adicionar curso, deve abrir o modal de busca;
-- A busca deve conter os seguintes filtros:
-  - Cidade;
-  - Curso;
-  - Modalidade (Presencial/EaD);
-  - Preço;
-- A lista de cursos deve ter ordenação por nome da faculdade;
-- Múltiplos cursos podem ser selecionados e adicionados à lista de favoritos;
-- O botão Adicionar bolsa(s) deve ficar desabilitado enquanto não houver cursos selecionados;
-- Os cursos podem ser removidos da lista de favoritos, através do botão Excluir;
-- O botão Ver oferta não leva a lugar algum;
-- Bolsas com { enabled: false }, devem aparecer com o botão Indisponível;
-- A lista de favoritos deve respeitar o semestre selecionado.
+- The project has a single page (SPA), with a favorites list and a modal to search for courses.
+- Should open the search modal by clicking on "add course"
+- The search list has the following filters:
+    - City
+    - Course
+    - Mode (Presencial/EaD)
+    - Price
+- The list of courses must be sorted by university
+- Multiple courses can be selected and added to the favorites list
+- The "add scholarship" button should be disabled when there are no courses selected
+- The course can be removed from the favorites list by clicking the delete button
+- "View Scholarship" button does not work
+- Bags with `{ enabled: false }`, must appear with unavailable button
+- The list of scholarships must respect the selected semester
 
 [Saber Mais...](https://github.com/quero-edu/front-end-test-quero)
 
@@ -27,14 +27,13 @@ Este desafio foi proposto pela Quero Educação com os seguintes requisitos de a
 
 - Live Demo: [Clique Aqui](https://favoritescholarship.herokuapp.com/minha-conta/bolsas-favoritas)
 
-## Pricípios de Desenvolvimento
+## Development Principles
 
-- Atomic Design
 - Mobile First
-- Programação Orientada a Objetos
-- Testes Unitários com Jest
+- POO
+- Unit Tests
 
-## Autor
+## Author
 
 - Website - [https://rodolfo-santos.com.br](https://rodolfo-santos.com.br)
 - Linkedin - [@rodolfosantos29](https://www.linkedin.com/in/rodolfosantos29/)
